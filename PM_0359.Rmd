@@ -16,5 +16,30 @@ library(modelr)
 library(tidyverse)
 library(gridExtra)
 ```
+#data_set
+
+```{r}
+data_set <- read_csv2(
+  "N:/4_PROJETS/2022/EMAD_22TQ_Ratio/StageM2_2024/Analyse_R/data_set_0359.csv",
+  col_types = cols(
+    Idbis = col_character(),
+    TIME = col_number(),
+    OBS_CFU = col_number(),
+    LOG10_CFU = col_number(),
+    delta_LOG10 = col_number(),
+    CMI = col_number(),
+    xCMI = col_number(),
+    OUTLIER = col_number(),
+    CONC_sulf = col_number(),
+    CONC_TMP = col_number()
+  ),
+  trim_ws = TRUE
+)
+
+data_set$ID<-as.factor(data_set$ID)
+
+#Enlever les OUTLIER==1
+data_set %>% filter(OUTLIER==0)->data_set
+```
 
 
